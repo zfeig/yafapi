@@ -57,8 +57,9 @@ seaslog.level = 0
 
 
 ####nginx配置：
-
-```server {
+xxxxx server节点配置
+```
+server {
         listen 80;
         server_name xxxxx;
         root /webs/yaf/two/public;
