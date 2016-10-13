@@ -1,0 +1,15 @@
+critical | 4996 | 1476329947.90 | 2016:10:13 11:39:07 | Error - type:1 - file:/webs/yaf/two/public/index.php - line:5 - msg:Uncaught Yaf_Exception_LoadFailed_Controller: Failed opening controller script /webs/yaf/two/application/controllers/V2.php: No such file or directory in /webs/yaf/two/public/index.php:5
+Stack trace:
+#0 /webs/yaf/two/public/index.php(5): Yaf_Application->run()
+#1 {main}
+  thrown 
+critical | 4997 | 1476329967.179 | 2016:10:13 11:39:27 | Error - type:1 - file:/webs/yaf/two/public/index.php - line:5 - msg:Uncaught Yaf_Exception_LoadFailed_Controller: Failed opening controller script /webs/yaf/two/application/controllers/V2.php: No such file or directory in /webs/yaf/two/public/index.php:5
+Stack trace:
+#0 /webs/yaf/two/public/index.php(5): Yaf_Application->run()
+#1 {main}
+  thrown 
+critical | 4996 | 1476330128.823 | 2016:10:13 11:42:08 | Error - type:1 - file:/webs/yaf/two/public/index.php - line:5 - msg:Uncaught Yaf_Exception_LoadFailed_Controller: Failed opening controller script /webs/yaf/two/application/controllers/V2.php: No such file or directory in /webs/yaf/two/public/index.php:5
+Stack trace:
+#0 /webs/yaf/two/public/index.php(5): Yaf_Application->run()
+#1 {main}
+  thrown 
