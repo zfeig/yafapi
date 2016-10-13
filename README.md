@@ -52,7 +52,7 @@ seaslog.level = 0
 
 
 #部署篇
-为了追求高性能建议使用nginx替换apache,这里以虚拟域名www.yaftwo.com为例,php版本为php7
+为了追求高性能建议使用nginx替换apache,这里以虚拟域名yaftwo.com为例,php版本为php7
 
 
 
@@ -60,7 +60,7 @@ seaslog.level = 0
 
 ```server {
         listen 80;
-        server_name www.yaftwo.com;
+        server_name [www.yaftwo.com](www.yaftwo.com);
         root /webs/yaf/two/public;
         index index.php index.html index.htm;
 
@@ -94,16 +94,16 @@ RewriteCond %{REQUEST_FILENAME}
 <VirtualHost *:80>
 ServerAdmin zfeig
 DocumentRoot /webs/yaf/two/public
-ServerName www.yaftwo.com
-ErrorLog "/logs/www.yaftwo.com.log"
-CustomLog "/logs/www.yaftwo.com.log" common
+ServerName [www.yaftwo.com](www.yaftwo.com)
+ErrorLog "/logs/yaftwo.com.log"
+CustomLog "/logs/yaftwo.com.log" common
 </VirtualHost>
 ```
 
 ####hosts虚拟域名配置
 
 ```
-127.0.0.1   www.yaftwo.com
+127.0.0.1   [www.yaftwo.com](www.yaftwo.com)
 ```
 
 ####测试数据库安装
@@ -122,7 +122,7 @@ CustomLog "/logs/www.yaftwo.com.log" common
 * /:ver/user/:id  ,指向index控制器user方法,绑定版本和id参数
 
 ####返回结果
-访问：http://www.yaftwo.com/v2/user/8，返回一下结果
+访问：[http://www.yaftwo.com/v2/user/8](http://www.yaftwo.com/v2/user/8)，返回一下结果
 
 ```
 {
