@@ -123,7 +123,7 @@ CustomLog "/logs/xxxxx_access.log" common
 * /:ver/user/:id  ,指向index控制器user方法,绑定版本和id参数
 
 ####返回结果
-访问：xxxxx，返回一下结果
+访问：[http://xxxxx/v1/user/8](http://xxxxx/v1/user/8)，返回一下结果
 
 ```
 {
