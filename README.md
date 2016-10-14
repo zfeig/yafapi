@@ -118,12 +118,12 @@ CustomLog "/logs/xxxxx_access.log" common
 
 ####RPC服务搭建
 
-本例是使用一个统一的入口:Server.php.通过客户端的参数来分发不同的服务,本例的RPC微服务目录如下
+* 本例是使用一个统一的入口:Server.php.通过客户端的参数来分发不同的服务,本例的RPC微服务目录如下:
 
 ```
 +Service  //微服务目录
 ++++IndexService.php
-++++TestSERVICE.php
+++++TestService.php
 ++++autoload.php
 +Server.php   //微服务入口文件
 ```
@@ -131,8 +131,21 @@ CustomLog "/logs/xxxxx_access.log" common
 
 
 
-####在本框架中封装了library/Rpc/Client.php类，在BootStrap时加载该类，调用RPC服务的时候,先确保具体服务在配置中rpc.services节点中，然后在具体控制器的action中调用
 
+####RPC客户端使用
+在本框架中封装了library/Rpc/Client.php类，在BootStrap时加载该类，调用RPC服务的时候,先确保具体服务在配置中rpc.services节点中，然后在具体控制器的action中调用
+
+* rpc节点配置：
+
+```
+;远程rpc请求地址
+rpc.address = "http://192.168.145.162:8000/Server.php"
+;远程rpc服务列表
+rpc.services = "IndexService,TestService"
+rpc.defaultService = "IndexService"
+```
+
+* 在action中的使用：
 
 ```
 $rpcServer = Client::init("TestService");  //远程服务名UserService，在配置rpc.services节点中注册
@@ -143,7 +156,7 @@ $ret = $rpcServer->api(['id'=>1]);  //远程服务名UserService的api方法
 
 
 
-####启动
+#启动
 确保redis,nginx,php-fpm,mysql相关服务政策开启，即可浏览接口地址
 
 
