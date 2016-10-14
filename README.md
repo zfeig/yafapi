@@ -118,7 +118,7 @@ CustomLog "/logs/xxxxx_access.log" common
 
 ####RPC服务搭建
 
-* 本例是使用一个统一的入口:Server.php.通过客户端的参数来分发不同的服务,本例的RPC微服务目录如下:
+* [本例](https://github.com/zfeig/rpcServerforYar.git)是使用一个统一的入口:Server.php.通过客户端的参数来分发不同的服务,本例的RPC微服务目录如下:
 
 ```
 +Service  //微服务目录
