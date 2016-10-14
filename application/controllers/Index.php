@@ -61,5 +61,12 @@ class IndexController extends BaseController {
       return $this->returnJson(200,"返回成功",$conf);
    }
 
+   public function rpcAction(){
+     $rpc_server = Client::init();
+     $data['api'] = $rpc_server->api(['name'=>'zfeig','age'=>25]);
+     $data['other'] = $rpc_server->other(['name'=>'lisi','age'=>28]);
+     return $this->returnJson(200,"rpc请求成功",$data);
+  }
+
 }
 ?>

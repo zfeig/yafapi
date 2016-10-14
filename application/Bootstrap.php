@@ -27,6 +27,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
     SeaLog::setLogger();
   }
 
+  public function _initRpc(){
+    Yaf_Loader::import("Rpc/Client.php");
+  }
+
   public function _initRoute(Yaf_Dispatcher $dispatcher){
     $router = Yaf_Dispatcher::getInstance()->getRouter();
 
@@ -38,6 +42,9 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
     $route3 = new Yaf_Route_Rewrite('/:num/demo',['controller'=>'index','action'=>'demo']);
     $router->addRoute('demo',$route3);
+
+    $route4 = new Yaf_Route_Rewrite('/:num/rpc',['controller'=>'index','action'=>'rpc']);
+    $router->addRoute('rpc',$route4);
   }
 
 }

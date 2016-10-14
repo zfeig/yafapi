@@ -2,12 +2,12 @@
 扩展yaf框架，封装常用DB类，cache类，Log类,适用于api接口开发，非侵入式，简单快速高效，追求高性能api
 ----------
 
-> 最快最简洁的c扩展框架+pdo原生操作数据库+c扩展redis/memcache做缓存+c扩展log日志+nginx+php7 = yafapi,使用yafapi开发的api应该不会慢!
+> 最快最简洁的c扩展框架+pdo原生操作数据库+c扩展redis/memcache做缓存+c扩展log日志+ 鸟哥的yarRPC扩展+nginx+php7 = yafapi,使用yafapi开发的api应该不会慢!
 
 
 # 扩展安装配置篇
 需要安装的扩展有redis,memcache,seaslog,yaf
-下载地址：[yaf](http://pecl.php.net/package/yaf) | [redis](http://pecl.php.net/package/redis) | [memcache](http://pecl.php.net/package/memcache) |  [seaslog](http://pecl.php.net/package/seaslog)
+下载地址：[yaf](http://pecl.php.net/package/yaf) |  [yar](http://pecl.php.net/package/yar) | [redis](http://pecl.php.net/package/redis) | [memcache](http://pecl.php.net/package/memcache) |  [seaslog](http://pecl.php.net/package/seaslog)
 
 ####安装方法
 * 进入到下载的扩展目录，cd  download/xx //下载路径以实际情况为准
@@ -45,6 +45,8 @@ seaslog.disting_by_hour = 1
 seaslog.use_buffer = 1
 seaslog.buffer_size = 100
 seaslog.level = 0
+[yar]
+extension="yar.so"
 ```
 
 ####查看安装模块
@@ -111,6 +113,36 @@ CustomLog "/logs/xxxxx_access.log" common
 默认为mysql数据库，将根目录下article.sql导入到test数据库中，编码为utf-8
 
 
+#RPC服务搭建及客户端调用
+在接口开发中，比如一些跨模块数据调用，共享业务，I/O密集型操作等需要单独解耦出来微服务化，这时候RPC就派上用场了。典型的业务场景是api接口调用其他微服务，这里api框架中的请求为客户端；对应的微服务地址为服务端
+
+####RPC服务搭建
+
+本例是使用一个统一的入口:Server.php.通过客户端的参数来分发不同的服务,本例的RPC微服务目录如下
+
+```
++Service  //微服务目录
+++++IndexService.php
+++++TestSERVICE.php
+++++autoload.php
++Server.php   //微服务入口文件
+```
+
+
+
+
+####在本框架中封装了library/Rpc/Client.php类，在BootStrap时加载该类，调用RPC服务的时候,先确保具体服务在配置中rpc.services节点中，然后在具体控制器的action中调用
+
+
+```
+$rpcServer = Client::init("TestService");  //远程服务名UserService，在配置rpc.services节点中注册
+$ret = $rpcServer->api(['id'=>1]);  //远程服务名UserService的api方法
+
+```
+
+
+
+
 ####启动
 确保redis,nginx,php-fpm,mysql相关服务政策开启，即可浏览接口地址
 
@@ -123,7 +155,7 @@ CustomLog "/logs/xxxxx_access.log" common
 * /:ver/user/:id  ,指向index控制器user方法,绑定版本和id参数
 
 ####返回结果
-访问：[http://xxxxx/v1/user/8](http://xxxxx/v1/user/8)，返回一下结果
+访问：[http://xxxxx/v2/user/8](http://xxxxx/v1/user/8)，返回一下结果
 
 ```
 {
