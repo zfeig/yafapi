@@ -116,7 +116,7 @@ CustomLog "/logs/xxxxx_access.log" common
 #RPC服务搭建及客户端调用
 在接口开发中，比如一些跨模块数据调用，共享业务，I/O密集型操作等需要单独解耦出来微服务化，这时候RPC就派上用场了。典型的业务场景是api接口调用其他微服务，这里api框架中的请求为客户端；对应的微服务地址为服务端
 
-####RPC服务搭建
+####RPC服务端搭建
 
 * [本例](https://github.com/zfeig/rpcServerforYar.git)是使用一个统一的入口:Server.php.通过客户端的参数来分发不同的服务,本例的RPC微服务目录如下:
 
@@ -128,6 +128,7 @@ CustomLog "/logs/xxxxx_access.log" common
 +Server.php   //微服务入口文件
 ```
 
+服务端源码地址[rpcServerforYar](https://github.com/zfeig/rpcServerforYar.git)
 
 
 
